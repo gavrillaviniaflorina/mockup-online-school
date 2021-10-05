@@ -1,13 +1,12 @@
 package repository;
 
-
-import model.ClassroomStudent;
+import model.Course;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassroomStudentRepository {
+public class CourseRepository {
 
     private String JdbcURl="jdbc:mysql://localhost:3306/hotel_db";
     private String username="root";
@@ -15,7 +14,7 @@ public class ClassroomStudentRepository {
     private Connection connection=null;
     private Statement statement=null;
 
-    public ClassroomStudentRepository(){
+    public CourseRepository(){
         try {
             connection = DriverManager.getConnection(JdbcURl, username, password);
             statement = connection.createStatement();
@@ -35,19 +34,27 @@ public class ClassroomStudentRepository {
         }
     }
 
-    public void insert(ClassroomStudent classroomStudent){
+    public void insert(Course course){
         String insert="";
-        insert+="insert into classroom_student (student_id,classroom_id) values (";
-        insert+=String.format("%d,%d",classroomStudent.getStudentId(),classroomStudent.getClassroomId());
+        insert+="insert into course (course_name,teacher_id,classroom_id) values (";
+        insert+=String.format("'%s',%d ,%d",course.getCourseName(),course.getTeacher_id(),course.getClassroom_id());
         insert+=");";
         executeStatement(insert);
     }
 
-    public void delete(int classroomStudentID){
+    public void delete(int courseId){
         String delete="";
-        delete+=String.format("delete from classroom_student where classroom_student_id=%d",classroomStudentID);
+        delete+=String.format("delete from course where course_id=%d",courseId);
         delete+=";";
         executeStatement(delete);
+    }
+
+    public void updateCourseName( int courseID,String courseName){
+
+        String update="";
+        update+=String.format("update classroom set course_name='%s'",courseName);
+        update+=String.format("where course_id=%d",courseID);
+        executeStatement(update);
     }
 
     private ResultSet all(){
@@ -63,13 +70,13 @@ public class ClassroomStudentRepository {
         }
     }
 
-    public List<ClassroomStudent>allClassrooms(){
+    public List<Course>allClassrooms(){
 
         ResultSet set=all();
-        List<ClassroomStudent> attendances=new ArrayList<>();
+        List<Course> attendances=new ArrayList<>();
         try{
             while(set.next()){
-                attendances.add(new ClassroomStudent(set.getInt(1),set.getInt(2)));
+                attendances.add(new Course(set.getString(1),set.getInt(2),set.getInt(3)));
             }
         }catch (Exception e){
             e.printStackTrace();

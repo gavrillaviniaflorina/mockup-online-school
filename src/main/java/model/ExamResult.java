@@ -10,25 +10,30 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 
 public class ExamResult implements Comparable<ExamResult>{
+    private int examResultId;
     private int examId;
     private int studentId;
-    private int courseId;
-    private String marks;
+    private int marks;
 
 
+    public ExamResult(int examId, int studentId, int marks) {
+        this.examId = examId;
+        this.studentId = studentId;
+        this.marks = marks;
+    }
 
     @Override
     public String toString(){
         String text="";
-        text+=this.examId+","+this.studentId+","+courseId+","+this.marks;
+        text+=this.examResultId+","+this.studentId+this.examId+","+this.marks;
         return text;
     }
 
     public String description() {
         String text = "";
-        text+="Exam ID:"+this.getExamId();
+        text+="Exam result Id:"+this.getExamResultId();
         text+="Student ID:"+this.getStudentId();
-        text+="Course ID:"+this.getCourseId();
+        text+="Exam ID:"+this.getExamId();
         text+="Marks :"+this.getMarks();
 
 

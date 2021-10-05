@@ -11,29 +11,25 @@ import lombok.RequiredArgsConstructor;
 public class Classroom implements Comparable<Classroom>{
 
     private int classroomId;
-    private int year;
-    private int teacherId;
-    private String SubjectName;
 
-    public Classroom(int year, int teacherId, String subjectName) {
-        this.year = year;
-        this.teacherId = teacherId;
-        SubjectName = subjectName;
+    private String classroomName;
+
+    public Classroom( String classroomName) {
+       this.classroomName=classroomName;
     }
 
     @Override
     public String toString(){
         String text="";
-        text+=this.classroomId+","+this.year+","+this.teacherId+","+this.SubjectName;
+        text+=this.classroomId+","+this.classroomName;
         return text;
     }
 
     public String description() {
         String text = "";
         text+="Classroom ID:"+this.getClassroomId();
-        text+="Classroom year:"+this.getYear();
-        text+="Teacher of the classroom:"+this.getTeacherId();
-        text+="Name of the subject:"+this.getSubjectName();
+        text+="Classroom name:"+this.classroomName;
+
 
         return text;
     }

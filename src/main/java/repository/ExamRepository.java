@@ -1,11 +1,11 @@
 package repository;
-import model.Attendance;
+
+import model.Exam;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-public class AttendanceRepository {
+public class ExamRepository {
 
     private String JdbcURl="jdbc:mysql://localhost:3306/hotel_db";
     private String username="root";
@@ -13,7 +13,7 @@ public class AttendanceRepository {
     private Connection connection=null;
     private Statement statement=null;
 
-    public AttendanceRepository(){
+    public ExamRepository(){
         try {
             connection = DriverManager.getConnection(JdbcURl, username, password);
             statement = connection.createStatement();
@@ -33,42 +33,40 @@ public class AttendanceRepository {
         }
     }
 
-    public void insert(Attendance attendance){
+    public void insert(Exam exam){
         String insert="";
-        insert+="insert into attendence (date,student_id,remark,status ) values (";
-        insert+=String.format("'%s',%d,'%s','%s'",attendance.getDate(),attendance.getStudentId(),attendance.getRemark());
+        insert+="insert into exam (course_id,start_date ) values (";
+        insert+=String.format("%d,'%s'",exam.getCourse_id(),exam.getDate());
         insert+=");";
         executeStatement(insert);
     }
 
-    public void delete(String date){
+    public void delete(int examID){
         String delete="";
-        delete+=String.format("delete from attendence where date='%s'",date);
+        delete+=String.format("delete from exam where exam_id=%d",examID);
         delete+=";";
         executeStatement(delete);
     }
 
-    public void updateDate( String vechi,String nou){
+    public void updateCourseID( int examID,int courseId){
 
         String update="";
-        update+=String.format("update attendence set date='%s'",nou);
-        update+=String.format("where date='%s'",vechi);
+        update+=String.format("update exam set course_id=%d",courseId);
+        update+=String.format("where exam_id=%d",examID);
         executeStatement(update);
     }
 
-    public void updateStudentId( String vechi,String nou){
+    public void updateStardDate( int examID,String startDate){
 
         String update="";
-        update+=String.format("update attendence set student_id=%d",nou);
-        update+=String.format("where student_id=%d",vechi);
+        update+=String.format("update exam set start_date='%s'",startDate);
+        update+=String.format("where exam_id=%d",examID);
         executeStatement(update);
     }
-
-
 
     private ResultSet all(){
 
-        executeStatement("select * from attendence");
+        executeStatement("select * from classroom");
 
         try{
             return statement.getResultSet();
@@ -79,13 +77,13 @@ public class AttendanceRepository {
         }
     }
 
-    public List<Attendance>allAttendence(){
+    public List<Exam>allClassrooms(){
 
         ResultSet set=all();
-        List<Attendance> attendances=new ArrayList<>();
+        List<Exam> attendances=new ArrayList<>();
         try{
             while(set.next()){
-                attendances.add(new Attendance(set.getString(0),set.getInt(1),set.getString(2)));
+                attendances.add(new Exam(set.getInt(1),set.getString(2)));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -95,3 +93,4 @@ public class AttendanceRepository {
     }
 
 }
+

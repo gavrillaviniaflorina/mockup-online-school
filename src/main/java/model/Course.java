@@ -12,26 +12,32 @@ import lombok.RequiredArgsConstructor;
 public class Course implements Comparable<Course>{
    private int courseID;
    private String courseName;
-   private int gradeID;
+   private int teacher_id;
+   private int classroom_id;
 
-    public Course(String courseName, int gradeID) {
+
+    public Course(String courseName,int teacher_id, int classroom_id) {
         this.courseName = courseName;
-        this.gradeID = gradeID;
+        this.teacher_id=teacher_id;
+        this.classroom_id=classroom_id;
+
     }
 
 
     @Override
     public String toString(){
         String text="";
-        text+=this.courseID+","+this.courseName+","+this.gradeID;
-        return text;
+        text+=this.courseID+","+this.courseName+","+this.teacher_id+","+this.classroom_id;
+    return text;
     }
 
     public String description() {
         String text = "";
         text+="Course ID:"+this.getCourseID();
         text+="Course name:"+this.getCourseName();
-        text+="Grade ID"+this.getGradeID();
+        text+="Teacher's ID:"+this.getTeacher_id();
+        text+="Classroom ID:"+this.getClassroom_id();
+
 
 
         return text;

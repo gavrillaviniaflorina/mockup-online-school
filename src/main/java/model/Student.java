@@ -20,13 +20,14 @@ public class Student  implements Comparable<Student> {
 
 
 
+
     public Student(String last_name, String first_name, String email, String password, String lastLogin, boolean status) {
         this.last_name = last_name;
         this.first_name = first_name;
         this.email = email;
         this.password = password;
         this.lastLogin = lastLogin;
-        this.status = status;
+
     }
 
     public String description(){

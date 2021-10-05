@@ -2,7 +2,6 @@ package model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 
 @Data
@@ -11,25 +10,25 @@ import lombok.RequiredArgsConstructor;
 
 public class Exam implements Comparable<Exam>{
     private int examId;
-    private int examTypeID;
+    private int course_id;
     private String date;
 
-    public Exam(int examTypeID, String date) {
-        this.examTypeID = examTypeID;
+    public Exam(int course_id, String date) {
+        this.course_id = course_id;
         this.date = date;
     }
 
     @Override
     public String toString(){
         String text="";
-        text+=this.examId+","+this.examTypeID+","+date;
+        text+=this.examId+","+this.course_id +","+date;
         return text;
     }
 
     public String description() {
         String text = "";
         text+="Exam ID:"+this.getExamId();
-        text+="Exam type name:"+this.getExamTypeID();
+        text+="Course ID:"+this.getCourse_id();
         text+="Start date"+this.getDate();
 
 
