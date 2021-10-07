@@ -104,7 +104,7 @@ public class TeacherRepository {
         }
     }
 
-    public List<Teacher>allClassrooms(){
+    public List<Teacher> allTeachers(){
 
         ResultSet set=all();
         List<Teacher> attendances=new ArrayList<>();

@@ -107,7 +107,7 @@ public class StudentRepository {
         }
     }
 
-    public List<Student>allClassrooms(){
+    public List<Student> allStudents(){
 
         ResultSet set=all();
         List<Student> attendances=new ArrayList<>();

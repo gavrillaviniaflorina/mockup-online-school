@@ -39,7 +39,7 @@ public class ClassroomRepository {
     public void insert(Classroom classroom){
         String insert="";
         insert+="insert into classroom (classroom_name ) values (";
-        insert+=String.format("%s'",classroom.getClassroomName());
+        insert+=String.format("'%s'",classroom.getClassroomName());
         insert+=");";
         executeStatement(insert);
     }
@@ -86,5 +86,6 @@ public class ClassroomRepository {
         }
         return attendances;
     }
+
 
 }

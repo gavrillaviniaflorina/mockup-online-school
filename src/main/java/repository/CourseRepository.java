@@ -57,6 +57,15 @@ public class CourseRepository {
         executeStatement(update);
     }
 
+
+    public void updateTeacherId( int courseID,int teacherId){
+
+        String update="";
+        update+=String.format("update course set teacher_id='%s'",teacherId);
+        update+=String.format("where course_id=%d",courseID);
+        executeStatement(update);
+    }
+
     private ResultSet all(){
 
         executeStatement("select * from classroom");
@@ -70,7 +79,7 @@ public class CourseRepository {
         }
     }
 
-    public List<Course>allClassrooms(){
+    public List<Course>allCourses(){
 
         ResultSet set=all();
         List<Course> attendances=new ArrayList<>();

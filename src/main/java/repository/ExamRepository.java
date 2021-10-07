@@ -77,7 +77,7 @@ public class ExamRepository {
         }
     }
 
-    public List<Exam>allClassrooms(){
+    public List<Exam>allExams(){
 
         ResultSet set=all();
         List<Exam> attendances=new ArrayList<>();

@@ -10,9 +10,9 @@ public class App {
 
     public static void main(String[] args) {
 
-     CourseRepository rep=new CourseRepository();
-     Course course=new Course("mate");
-     rep.insert(course);
+  ClassroomRepository repository=new ClassroomRepository();
+  Classroom classroom=new Classroom("CEN");
+  repository.insert(classroom);
 
 
     }

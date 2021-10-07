@@ -50,6 +50,14 @@ public class ClassroomStudentRepository {
         executeStatement(delete);
     }
 
+    public void updateClassroomStudentId( int classroomStudentId,int classroomId){
+
+        String update="";
+        update+=String.format("update classroom_student set classroom_id=%d",classroomId);
+        update+=String.format("where classroom_student_id=%d",classroomStudentId);
+        executeStatement(update);
+    }
+
     private ResultSet all(){
 
         executeStatement("select * from classroom");
@@ -63,7 +71,7 @@ public class ClassroomStudentRepository {
         }
     }
 
-    public List<ClassroomStudent>allClassrooms(){
+    public List<ClassroomStudent> allClassroomStudents(){
 
         ResultSet set=all();
         List<ClassroomStudent> attendances=new ArrayList<>();
