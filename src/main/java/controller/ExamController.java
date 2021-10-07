@@ -22,7 +22,9 @@ public class ExamController {
     }
 
     public void insert(Exam exam){
+
         examRepository.insert(exam);
+        System.out.println("The exam was inserted");
     }
 
     public void delete(int id){

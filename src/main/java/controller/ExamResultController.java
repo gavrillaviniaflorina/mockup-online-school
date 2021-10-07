@@ -12,7 +12,9 @@ public class ExamResultController {
     }
 
     public void insert(ExamResult examResult){
+
         examResultRepository.insert(examResult);
+        System.out.println("The exam result was inserted");
     }
 
     public boolean exist(ExamResult examResult){
@@ -48,6 +50,30 @@ public class ExamResultController {
             System.out.println("The student id was updated");
         }else{
             System.out.println("The exam result does not exist.");
+        }
+    }
+
+    public void updateExamId(int id, int examId){
+        if(exist(examResult(id))==true){
+            examResultRepository.updateExamID(id,examId);
+            System.out.println("The exam id was updated.");
+        }else{
+            System.out.println("The exam id does not exist.");
+        }
+    }
+
+    public void updateMarks(int id, int mark){
+        if(exist(examResult(id))==true){
+            examResultRepository.updateMarks(id, mark);
+            System.out.println("The mark was updated.");
+        }else{
+            System.out.println("The exam resul does not exist.");
+        }
+    }
+
+    public void print(){
+        for(ExamResult examResult: examResultRepository.allExamResults()){
+            System.out.println(examResult.description());
         }
     }
 }

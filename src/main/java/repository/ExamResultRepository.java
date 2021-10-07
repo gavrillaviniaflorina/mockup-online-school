@@ -65,7 +65,7 @@ public class ExamResultRepository {
         executeStatement(update);
     }
 
-    public void updateMarksID( int examResultID,int marks){
+    public void updateMarks( int examResultID,int marks){
 
         String update="";
         update+=String.format("update exam_result set marks=%d",marks);

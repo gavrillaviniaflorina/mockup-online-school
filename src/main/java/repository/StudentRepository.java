@@ -1,6 +1,7 @@
 package repository;
 
 
+import model.ExamResult;
 import model.Student;
 
 import java.sql.*;
@@ -88,11 +89,6 @@ public class StudentRepository {
         update+=String.format("where student_id=%d",studentID);
         executeStatement(update);
     }
-
-
-
-
-
 
     private ResultSet all(){
 
