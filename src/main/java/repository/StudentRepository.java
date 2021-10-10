@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 public class StudentRepository {
-    private String JdbcURl="jdbc:mysql://localhost:3306/hotel_db";
+    private String JdbcURl="jdbc:mysql://localhost:3306/online-school.db";
     private String username="root";
     private String password="root";
     private Connection connection=null;

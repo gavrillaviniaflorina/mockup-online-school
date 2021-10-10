@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ClassroomRepository {
 
-    private String JdbcURl="jdbc:mysql://localhost:3306/hotel_db";
+    private String JdbcURl="jdbc:mysql://localhost:3306/online-school.db";
     private String username="root";
     private String password="root";
     private Connection connection=null;
@@ -78,7 +78,7 @@ public class ClassroomRepository {
         List<Classroom> attendances=new ArrayList<>();
         try{
             while(set.next()){
-                attendances.add(new Classroom(set.getInt(1),set.getString(2)));
+                attendances.add(new Classroom(set.getString(1)));
             }
         }catch (Exception e){
             e.printStackTrace();

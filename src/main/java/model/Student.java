@@ -28,6 +28,7 @@ public class Student  implements Comparable<Student> {
         this.password = password;
         this.lastLogin = lastLogin;
 
+
     }
 
     public String description(){
@@ -39,6 +40,7 @@ public class Student  implements Comparable<Student> {
         text+="Student's password:"+this.password;
         text+="Student's last login date:"+this.lastLogin;
         text+="Student's status:"+this.status;
+
         return text;
     }
 
