@@ -67,6 +67,15 @@ public class ExamController {
         }
     }
 
+    public String startDate(int id){
+        for(Exam exam:examRepository.allExams()){
+            if(exam.getExamId()==id){
+                return exam.getDate();
+            }
+        }
+        return null;
+    }
+
     public void print(){
         for(Exam exam: examRepository.allExams()){
             System.out.println(exam.description());

@@ -2,6 +2,7 @@ package controller;
 
 
 import model.ClassroomStudent;
+import model.Student;
 import repository.ClassroomStudentRepository;
 
 import java.util.List;
@@ -70,4 +71,12 @@ public class ClassroomStudentController {
         }
     }
 
+    public int studentsClassroom(int id){
+        for(ClassroomStudent classroomStudent:classroomStudentRepository.allClassroomStudents()){
+            if(classroomStudent.getClasroomStundetId()==id){
+                return classroomStudent.getClassroomId();
+            }
+        }
+        return -1;
+    }
 }

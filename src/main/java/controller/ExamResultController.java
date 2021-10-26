@@ -76,4 +76,13 @@ public class ExamResultController {
             System.out.println(examResult.description());
         }
     }
+
+    public ExamResult result(int studentId, int examId){
+        for(ExamResult examResult:examResultRepository.allExamResults()){
+            if (examResult.getStudentId()==studentId && examResult.getExamId()==examId){
+                return examResult;
+            }
+        }
+        return new ExamResult(-1,-1,-1,-1);
+    }
 }

@@ -3,6 +3,8 @@ package controller;
 import model.Student;
 import repository.StudentRepository;
 
+import java.sql.Struct;
+
 public class StudentController {
 
     private StudentRepository studentRepository;
@@ -61,6 +63,15 @@ public class StudentController {
         }else{
             System.out.println("The student does not exist");
         }
+    }
+
+    public Student studentNumePrenume(String nume, String prenume){
+        for(Student student:studentRepository.allStudents()){
+            if(student.getLast_name().equals(nume)&& student.getFirst_name().equals(prenume)){
+                return student;
+            }
+        }
+        return new Student(-1,"","","","","",false);
     }
 
     public void print(){
