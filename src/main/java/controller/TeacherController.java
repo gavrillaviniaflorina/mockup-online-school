@@ -1,6 +1,7 @@
 package controller;
 
 import model.Course;
+import model.Student;
 import model.Teacher;
 import repository.TeacherRepository;
 
@@ -28,6 +29,15 @@ public  class TeacherController {
     public Teacher teacher(int id){
         for(Teacher teacher: teacherRepository.allTeachers()){
             if(teacher.getTeacher_id()==id){
+                return teacher;
+            }
+        }
+        return new Teacher(-1,"","","","","",false);
+    }
+
+    public Teacher Name(String name){
+        for(Teacher teacher: teacherRepository.allTeachers()){
+            if(teacher.getLastName().equals(name)){
                 return teacher;
             }
         }
@@ -67,6 +77,15 @@ public  class TeacherController {
         }
     }
 
+
+    public Teacher numePrenumeTeacher(String nume, String prenume){
+        for(Teacher teacher:teacherRepository.allTeachers()){
+            if(teacher.getLastName().equals(nume)&& teacher.getFirstName().equals(prenume)){
+                return teacher;
+            }
+        }
+        return new Teacher(-1,"","","","","",false);
+    }
 
 
 }

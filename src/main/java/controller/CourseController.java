@@ -6,6 +6,7 @@ import model.Teacher;
 import repository.CourseRepository;
 import repository.TeacherRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CourseController {
@@ -88,5 +89,15 @@ public class CourseController {
                 System.out.println(course.getCourseName());
             }
         }
+    }
+
+    public List<Course> predate(int id){
+        List<Course> courses=new ArrayList<>();
+        for(Course course:courseRepository.allCourses()){
+            if(course.getTeacher_id()==id){
+               courses.add(course) ;
+            }
+        }
+        return courses;
     }
 }

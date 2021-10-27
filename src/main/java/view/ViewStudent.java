@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class ViewStudent {
 
+    private Student student;
     private ClassroomStudentController classroomStudentController;
     private CourseController courseController;
     private ExamController examController;
@@ -17,7 +18,9 @@ public class ViewStudent {
     private Scanner scanner;
 
 
-    public ViewStudent() {
+    public ViewStudent(Student student) {
+
+        this.student=student;
         this.classroomStudentController=new ClassroomStudentController();
         this.courseController=new CourseController();
         this.examController=new ExamController();
@@ -82,10 +85,9 @@ public class ViewStudent {
 
 
     private void updateMail() {
-        System.out.println("Introduceti numele:");
-        String nume = scanner.nextLine();
-        System.out.println("Introduceti prenumele:");
-        String prenume = scanner.nextLine();
+
+        String nume = this.student.getLast_name();
+        String prenume = this.student.getFirst_name();
         System.out.println("Introduceti noul email");
         String email = scanner.nextLine();
 
@@ -99,10 +101,8 @@ public class ViewStudent {
     }
 
     private void updateParola() {
-        System.out.println("Introduceti numele:");
-        String nume = scanner.nextLine();
-        System.out.println("Introduceti prenumele:");
-        String prenume = scanner.nextLine();
+        String nume = this.student.getLast_name();
+        String prenume = this.student.getFirst_name();
         System.out.println("Introduceti noua parola");
         String parola = scanner.nextLine();
 
@@ -115,8 +115,8 @@ public class ViewStudent {
     }
 
     private void idClasa(){
-        System.out.println("Introduceti id-ul dumneavoastra de student");
-        int id=Integer.parseInt(scanner.nextLine());
+
+        int id=this.student.getStudent_id();
 
         int idClasa=classroomStudentController.studentsClassroom(id);
 
@@ -151,8 +151,8 @@ public class ViewStudent {
 
     private void notaExamen(){
 
-        System.out.println("Introduceti id-ul de student");
-       int idStudent=Integer.parseInt(scanner.nextLine());
+
+       int idStudent=student.getStudent_id();
         System.out.println("Introduceti id-ul examenului");
         int idExamen=Integer.parseInt(scanner.nextLine());
 
