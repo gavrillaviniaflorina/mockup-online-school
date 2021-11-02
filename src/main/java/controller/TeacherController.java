@@ -5,6 +5,9 @@ import model.Student;
 import model.Teacher;
 import repository.TeacherRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public  class TeacherController {
     private TeacherRepository teacherRepository;
 
@@ -85,6 +88,12 @@ public  class TeacherController {
             }
         }
         return new Teacher(-1,"","","","","",false);
+    }
+
+    public List<Teacher> teachers(){
+        List<Teacher> list=new ArrayList<>();
+        list=teacherRepository.allTeachers();
+        return list;
     }
 
 

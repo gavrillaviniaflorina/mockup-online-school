@@ -4,6 +4,8 @@ import model.Student;
 import repository.StudentRepository;
 
 import java.sql.Struct;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentController {
 
@@ -78,5 +80,12 @@ public class StudentController {
         for(Student student: studentRepository.allStudents()){
             System.out.println(student.description());
         }
+    }
+
+    public List<Student> students(){
+
+        List<Student>list=new ArrayList<>();
+        list=studentRepository.allStudents();
+        return list;
     }
 }

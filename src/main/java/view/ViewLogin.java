@@ -28,7 +28,7 @@ public class ViewLogin {
 
 
 
-    private void login(){
+    public void play(){
 
         System.out.println("Introduceti statusul dvs(ex:teacher, student)");
         String status=scanner.nextLine();
